@@ -1,0 +1,72 @@
+CREATE TABLE customer(
+cust_id int,
+cust_fname varchar2(100),
+cust_lname varchar2(100),
+territory varchar2(100),
+cred_lmt int,
+mngr_id int,
+marital_status varchar2(100),
+sex varchar2(30),
+income int);
+
+
+//Inserting data//
+
+
+insert into customer(cust_id,cust_fname,cust_lname,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(01,'Rahul','Singh','India',10000,112,'Single','Male',65000);
+insert into customer(cust_id,cust_fname,cust_lname,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+
+insert into customer(cust_id,cust_fname,cust_lname,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(02,'Meg','Sen','India',15000,113,'Married','Male',67000);
+
+insert into customer(cust_id,cust_fname,cust_lname,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(03,'George','Matthew','Italy',12000,114,'Single','Male',63000);
+
+insert into customer(cust_id,cust_fname,cust_lname,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(04,'Jennifer','Lopez','America',14000,115,'Married','Female',68000);
+
+insert into customer(cust_id,cust_fname,cust_lname,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(05,'Robert','Johnson','Australia',15000,116,'Married','Male',65000);
+
+insert into customer(cust_id,cust_fname,cust_lname,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(06,'Meghna','Chakraborty','India',15000,117,'Married','Female',65000);
+
+
+
+2.
+
+alter table customer
+add stay_from_year int;
+
+3.
+update customer set stay_from_year = 2001 where territory = 'Italy';
+update customer set stay_from_year = 2001 where territory = 'America';
+update customer set stay_from_year = 2003 where territory = 'Australia';
+update customer set stay_from_year = 2003 where territory = 'India';
+
+//sir 
+
+
+update customer set stay_from_year = 2001 where terriroty in('Italy','America');
+
+update customer set stay_from_year = 2001 where terriroty not in('Italy','America');
+
+
+4
+
+select cred_lmt from customer
+
+5.
+delete from customer where cust_fname='Meg' and cust_lname = 'Sen';
+
+6.select * from customer where territory = 'Italy';
+
+7.
+update customer set cred_lmt = 7000 where territory = 'India' and marital_status='Single';
+
+8.
+ALTER TABLE customer RENAME COLUMN cust_lname to last_name;
+9.
+ALTER TABLE customer RENAME COLUMN cust_fname to first_name;
+
