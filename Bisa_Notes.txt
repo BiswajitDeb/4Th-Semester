@@ -86,3 +86,20 @@ insert into customer(cust_id,first_name,last_name,territory,cred_lmt,mngr_id,mar
 update customer set last_name=(select last_name from customer where cust_id='68') where cust_id='63';
 
 select * from customer
+
+24
+Update customer set last_name=(select last_name from customer where cust_id='63') where cust_id='68';
+
+25
+select * from customer where territory='America' and cred_lmt=25000;
+
+26
+select * from customer where territory='India' and income>20000;
+
+27
+select first_name, last_name from customer where cred_lmt between 2000 and 7000;
+28
+select * from customer where income in (20000, 24000, 300, 4500);
+
+29
+select * from customer order by first_name;
