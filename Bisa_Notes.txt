@@ -70,3 +70,19 @@ ALTER TABLE customer RENAME COLUMN cust_lname to last_name;
 9.
 ALTER TABLE customer RENAME COLUMN cust_fname to first_name;
 
+
+22
+alter table cust3 modify cust_id varchar(5)
+alter table cust3 alter column cust_id varchar(5)
+
+23
+select * from customer
+insert into customer(cust_id,first_name,last_name,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(63,'Sanmoy','Dam','India',10000,112,'Single','Male',65000);
+
+insert into customer(cust_id,first_name,last_name,territory,cred_lmt,mngr_id,marital_status,sex,income) values
+(68,'Ananya','Mullic','India',10000,112,'Single','Female',65000);
+
+update customer set last_name=(select last_name from customer where cust_id='68') where cust_id='63';
+
+select * from customer
