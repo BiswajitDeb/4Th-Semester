@@ -103,3 +103,6 @@ select * from customer where income in (20000, 24000, 300, 4500);
 
 29
 select * from customer order by first_name;
+
+30
+select * from customer order by income desc;
