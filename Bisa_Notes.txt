@@ -70,6 +70,50 @@ ALTER TABLE customer RENAME COLUMN cust_lname to last_name;
 9.
 ALTER TABLE customer RENAME COLUMN cust_fname to first_name;
 
+10
+create table cust1 as select * from customer;
+
+11
+create table cust2 as select * from cust1 where 0=1;
+
+12
+create table cust3 as select cust_id, first_name, last_name, income from customer where rownum<=5;
+
+13
+create table cust4 as select cust_id, first_name, last_name, income from customer where 0=1;
+
+14
+alter table cust1 drop column income;
+
+15
+alter table cust1 rename to cust_one;
+
+16
+insert into cust2 select * from customer;
+
+17
+insert into cust3 select cust_id, first_name, last_name, income from customer where income>50000;
+
+18
+alter table cust4 
+modify (cust_id varchar(6), income number(5));
+
+19
+alter table cust4 add mngr_name varchar2(100);
+insert all
+into cust4 (cust_id, first_name, last_name, income, mngr_name) values (1, 'Johanes', 'Goldmill', 90000, 'Steward')
+into cust4 (cust_id, first_name, last_name, income, mngr_name) values (2, 'Ben', 'Tennyson', 87000, 'Lollipop')
+into cust4 (cust_id, first_name, last_name, income, mngr_name) values (3, 'Gwen', 'Schmidth', 78000, 'Steward')
+into cust4 (cust_id, first_name, last_name, income, mngr_name) values (4, 'Svetlana', 'Gulakova', 95000, 'James')
+into cust4 (cust_id, first_name, last_name, income, mngr_name) values (5, 'Alya', 'Pekinson', 77000, 'Steward')
+select * from dual;
+
+20
+alter table cust4 add territory varchar2(100);
+
+21
+drop table cust3;
+flashback table cust3 to before drop;
 
 22
 alter table cust3 modify cust_id varchar(5)
