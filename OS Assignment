@@ -1,0 +1,23 @@
+echo Enter two numbers : 
+read i j
+echo Choose the function :
+echo 1.Addition 
+echo 2.Substraction 
+echo 3.Multiplication 
+echo 4.Division
+read choice
+
+if [ $choice -eq 1 ]
+then
+	res=`expr $i + $j`
+elif [ $choice -eq 2 ]
+then
+    res=`expr $i - $j`
+elif [ $choice -eq 3 ]
+then
+    res=`expr $i \* $j`
+elif [ $choice -eq 4 ]
+then
+    res= `expr $i / $j`
+fi
+echo $res
