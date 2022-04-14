@@ -1,0 +1,29 @@
+create table dept
+(
+dept_id number(3) primary key,
+dept_name varchar2(10) check(dept_name = initcap(dept_name)));
+
+insert into dept(dept_id,dept_name) values (90,'Cse');
+insert into dept(dept_id,dept_name) values (69,'Csbs');
+insert into dept(dept_id,dept_name) values (100,'Ece');
+insert into dept(dept_id,dept_name) values (110,'Rae');
+
+/////cust_100
+
+create table cust_100
+(
+emp_id number(3) primary key,
+first_name varchar2(10) check(first_name = initcap(first_name)),
+last_name varchar2(10) check(last_name = initcap(last_name)) not null,
+e_mail varchar2(10) check( e_mail = upper(e_mail)),
+ph_no varchar2(15),
+hire_date Date check( hire_date > '01-jan-1980' ),
+job_id varchar2(10) check(job_id like 'FI%' or job_id like 'AD%' or job_id like 'IT%'),
+salary number(8,2) check(salary >=4000 and salary <= 25000),
+mgr_id number(3),
+dept_id number(3) references dept(dept_id)
+);
+
+
+select Constraint_name from USER_CONSTRAINTS
+where constraint_type='p' and table_name='cust_100';
