@@ -48,6 +48,19 @@ for(int i = 0; i < n-1; i++)
     }
 }
 
+//selecting items
+
+while (max!=0)
+{   
+    int j=n-1;
+    if(max < value[j])
+    {
+        
+    }
+    
+}
+
+
 
     printf("Enter maximum capacity : ");
     scanf("%d", &max);
