@@ -2,14 +2,14 @@
 int main()
 {
     int n;
-    printf("Enter number of Jobs : ");
+    printf("Enter number of materials : ");
     scanf("%d", &n);
     float weight[n];
     float value[n];
-    int max;
+    float max;
     float per_unit[n];
 
-    printf("Enter the weights of the materials : ");
+    printf("Enter the weights of the materials : \n");
     for (int i = 0; i < n; i++)
     {
         printf("Enter the weight of the %dth material : ",i);
@@ -19,7 +19,8 @@ int main()
 
         per_unit[i] = value[i]/weight[i];
     }
-
+    printf ("Enter max capasity of the knapsack : ");
+    scanf("%f",&max);
 //sorting by per_unit value
 
 int temp_unit;
@@ -49,21 +50,28 @@ for(int i = 0; i < n-1; i++)
 }
 
 //selecting items
+float profit=0;
 
 while (max!=0)
 {   
-    int j=n-1;
-    if(max < value[j])
+    int k=n-1;
+
+    if(max < value[k])
     {
-        
+        profit += per_unit[k]*max;
+        max=0;
+    }
+    else
+    {
+        max -= weight[k];
+        profit += value[k];
+        k--;
+
     }
     
 }
 
-
-
-    printf("Enter maximum capacity : ");
-    scanf("%d", &max);
+    printf("The max profit possible is : %f",profit);
 
 
     return 0;
