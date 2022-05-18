@@ -33,21 +33,41 @@ for(int i = 0; i < n-1; i++)
         if(per_unit[j]>per_unit[j+1])
         {
             temp_unit = per_unit[j];
-            temp_weight = weight[j];
-            temp_value = value[j];
-
             per_unit[j]=per_unit[j+1];
-            weight[j]=weight[j+1];
-            value[j]=value[j+1];
-
-
             per_unit[j+1]=temp_unit;
+
+            temp_weight = weight[j];
+            weight[j]=weight[j+1];
             weight[j+1]=temp_weight;
+
+            temp_value = value[j];
+            value[j]=value[j+1];
             value[j+1]=temp_value;
 
         }
     }
 }
+
+
+//sorted array
+printf("The sorted weight : ");
+for(int i=0;i<n;i++)
+{
+    printf("%f ",weight[i]);
+}
+printf("\n");
+printf("The sorted value : ");
+for(int i=0;i<n;i++)
+{
+    printf("%f ",value[i]);
+}
+printf("\n");
+printf("The sorted per_unit : ");
+for(int i=0;i<n;i++)
+{
+    printf("%f ",per_unit[i]);
+}
+
 
 //selecting items
 float profit=0;
@@ -56,10 +76,11 @@ while (max!=0)
 {   
     int k=n-1;
 
-    if(max < value[k])
+    if(max < weight[k])
     {
         profit += per_unit[k]*max;
-        max=0;
+        //max -= weight[k];
+        // max=0;
     }
     else
     {
