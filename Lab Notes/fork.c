@@ -16,3 +16,31 @@ int main()
 	}
 	return 0;
 }
+
+
+//Fork && and ||
+
+#include<stdio.h>
+#include<sys/types.h>
+#include<unistd.h>
+int main()
+{
+	if(fork() && fork())
+	{
+		printf("True\n");
+	}
+	else	printf("False");
+	
+	if(fork() || fork())
+	{
+		printf("True\n");
+	}
+	else	printf("False\n");
+
+	//pid_t pid;
+	//pid = fork();
+	//printf("Hello\n");
+	//printf("Pid : %d\tPPid : %d",getpid(),getppid());
+	//printf("\n");
+	return 0;
+}
