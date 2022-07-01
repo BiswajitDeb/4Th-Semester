@@ -19,8 +19,9 @@ void sort_by_Burst(int n, int Process[][4] )
 	Process[0][2] = 0;
 }
 
-void Waiting(int n,int Process[][4],int total_wait,float avg_waiting)
+void Waiting(int n,int Process[][4],int total_wait)
 {
+    total_wait=0;
 	for (int i = 1; i < n; i++) {
 		Process[i][2] = 0;
 		for (int j = 0; j < i; j++)
@@ -30,8 +31,9 @@ void Waiting(int n,int Process[][4],int total_wait,float avg_waiting)
     // printf("Total Wait : %d",total_wait);
 }
 
-void TurnAround(int n,int Process[][4],int total_turn,float avg_Turn_Around)
+void TurnAround(int n,int Process[][4],int total_turn)
 {
+    total_turn=0;
 	for (int i = 0; i < n; i++) {
 		Process[i][3] = Process[i][1] + Process[i][2];
 		total_turn += Process[i][3];
@@ -70,16 +72,26 @@ void sort_by_process(int n,int Process[][4])
 
 void display(int n, int Process[][4])
 {
+    int total_wait=0,total_turn_around=0;
+    float avg_wait,avg_turn;
     printf("Process	 Burst Time\t\tWaiting Time\t\tTurn Around Time\n");
     for(int i=0;i<n;i++)
     {
+        total_wait += Process[i][2];
+        total_turn_around += Process[i][3];
         printf("P%d \t\t %d \t\t %d	\t\t %d\n", Process[i][0],Process[i][1], Process[i][2], Process[i][3]);
     }
+    avg_wait=total_wait/n;
+    avg_turn=total_turn_around/n;
+    // printf("Total wait : %d\nTotal Turn : %d\n",total_wait,total_turn_around);
+	printf("Average Waiting Time : %f", avg_wait);
+	printf("\nAverage Turnaround Time : %f", avg_turn);
+    
 }
 
 int main()
 {
-	int n, total_wait = 0,total_turn=0;
+	int n, total_wait,total_turn;
 	float avg_waiting, avg_Turn_Around;
 	printf("Enter number of process: ");
 	scanf("%d", &n);
@@ -93,18 +105,17 @@ int main()
 	
     sort_by_Burst(n,Process);
 	
-    Waiting(n,Process,total_wait,avg_waiting);
+    Waiting(n,Process,total_wait);
 	
 
-    TurnAround(n,Process,total_turn,avg_Turn_Around);
+    TurnAround(n,Process,total_turn);
     
 
     sort_by_process(n,Process);
-    avg_waiting = total_wait / n;
-    avg_Turn_Around = total_turn / n;   
+
 	
     display(n,Process);
-	
-	printf("Average Waiting Time : %d", total_wait);
-	printf("\nAverage Turnaround Time : %d", total_turn);
+
+    return 0;
+
 }

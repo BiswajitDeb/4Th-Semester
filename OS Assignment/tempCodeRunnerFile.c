@@ -1,0 +1,1 @@
+printf("Total wait : %d\nTotal Turn : %d\n",total_wait,total_turn_around);
